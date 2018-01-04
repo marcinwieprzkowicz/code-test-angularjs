@@ -26,3 +26,5 @@ npm run test:watch
 4. Implement `Load more` button in beers list to fetch more beers.
 5. Beers list should take full height of browser window and be scrollable.
 6. On item click from beers list load beer details and render them in `render beer details here` section.
+7. Add search input, where you can filter beers list by name.
+8. Add unit tests if possible.
