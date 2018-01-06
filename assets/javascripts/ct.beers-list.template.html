@@ -1,3 +1,4 @@
 <ul>
-  <li ng-repeat="beer in $parent.beers">{{beer.name}}</li>
+  <li ng-repeat="beer in beers">{{beer.name}}</li>
 </ul>
+<button type="button" ng-disabled="noMoreBeers" ng-click="loadMore()">Load more</button>
