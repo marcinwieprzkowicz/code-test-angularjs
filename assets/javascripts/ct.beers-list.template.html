@@ -1,4 +1,4 @@
 <ul>
-  <li ng-repeat="beer in $ctrl.beers">{{beer.name}}</li>
+  <li ng-class="emphasize: isSelected(beer.id)" ng-repeat="beer in $ctrl.beers" ng-click="selectBeer(beer.id)">{{beer.name}}</li>
 </ul>
-<button type="button" ng-disabled="noMoreBeers" ng-click="loadMore()">Load more</button>
+<button class="load-more" type="button" ng-disabled="noMoreBeers || awaitingResponse" ng-click="loadMore()">Load more</button>
