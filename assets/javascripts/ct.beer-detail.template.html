@@ -1,5 +1,9 @@
-<img class="beer-image" ng-src="{{$ctrl.beer.image_url}}" alt="{{$ctrl.beer.name}}" title="{{$ctrl.beer.name}}" />
-<h2>{{$ctrl.beer.name}}</h2>
-<div>{{$ctrl.beer.tagline}}</div>
-<p>{{$ctrl.beer.description}}</p>
-
+<div ng-if="!isImageLoaded">
+  <img class="image-loading" src="../images/spinner.jpg"/>
+</div>
+<div ng-show="isImageLoaded" class="fade">
+  <img class="beer-image" ng-src="{{$ctrl.beer.image_url}}" alt="{{$ctrl.beer.name}}" title="{{$ctrl.beer.name}}" />
+  <h2>{{$ctrl.beer.name}}</h2>
+  <div>{{$ctrl.beer.tagline}}</div>
+  <p>{{$ctrl.beer.description}}</p>
+</div>

@@ -8,8 +8,18 @@ angular.module('ct.beer-detail.component', []).component('ctBeerDetail', {
   controller: BeerDetailController
 });
 
-function BeerDetailController($scope) {
+function BeerDetailController($scope, $element) {
   const ctrl = this;
   ctrl.$onInit = function() {
+  };
+
+  ctrl.$onChanges = function() {
+    $scope.isImageLoaded = false;
+
+    $element.find('img').bind('load', function() {
+      $scope.$apply(function() {
+        $scope.isImageLoaded = true;
+      });
+    });
   };
 }

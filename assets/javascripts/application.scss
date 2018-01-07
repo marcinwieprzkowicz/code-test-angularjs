@@ -1,4 +1,73 @@
+$sidebarWidth: 30em;
+
 html,
 body {
   margin: 0;
+  padding: 0;
+}
+
+.app {
+  height: 100vh;
+
+  .beers {
+    width: $sidebarWidth;
+    position: fixed;
+    height: 100vh;
+    top: 0;
+
+    .load-more {
+      position: absolute;
+      right: 2em;
+      bottom: 2em;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      list-style: none;
+      overflow: auto;
+
+      li {
+        cursor: pointer;
+        .emphasize {
+          font-weight: bold;
+        }
+      }
+      li:hover {
+        background: green;
+      }
+    }
+  }
+
+  .beer {
+    margin-left: $sidebarWidth;
+    position: fixed;
+    padding: 2em;
+
+    .image-loading {
+      animation: image-spin infinite 4s linear;
+      height: 100px;
+    }
+
+    .beer-image {
+      float: right;
+      transform: rotate(-10deg);
+      height: 90vh;
+    }
+  }
+}
+
+@keyframes image-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.fade {
+    transition: all linear 500ms;
+    opacity: 1;
+}
+
+.fade.ng-hide {
+    opacity: 0;
 }
