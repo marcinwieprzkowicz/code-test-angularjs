@@ -21,8 +21,8 @@ angular.module('codetest', [
     resolve: {
       beersList: curryGetBeers(1, $httpParamSerializerProvider.$get())
     },
-    controller: function($scope, beersList){
-      $scope.beers = beersList.data;
+    controller: function($scope, beersList) {
+      this.beers = beersList.data;
     },
     controllerAs: 'codetest'
   });
