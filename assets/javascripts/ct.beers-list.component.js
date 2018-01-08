@@ -16,25 +16,36 @@ function BeersListController($scope, $element, $timeout, $httpParamSerializer, $
   let preLoadedBeers = [];
 
   ctrl.$onInit = function() {
+    $scope.noMoreBeers = false;
     // fetch second page of beers without displaying it
-    preLoadNextBatch();
+    preLoadNextBatch(2);
   };
 
   $scope.loadMore = function() {
     $scope.awaitingResponse = true;
     page += 1;
-    preLoadNextBatch();
+    preLoadNextBatch(page + 1);
+  };
+
+  $scope.filterBeersList = function() {
+    $scope.noMoreBeers = false;
+    preLoadedBeers = [];
+    ctrl.beers = [];
+
+    preLoadNextBatch(1).then(function() { preLoadNextBatch(2); });
   };
 
   $scope.selectBeer = function(beerId) {
-    $scope.isSelected = true;
-    const selectedBeerIndex = ctrl.beers.map(beer => beer.id).indexOf(beerId);
+    const selectedBeerIndex = ctrl.beers.map(beer => {
+      beer.isSelected = beer.id === beerId;
+      return beer.id;
+    }).indexOf(beerId);
     const selectedBeer = ctrl.beers[selectedBeerIndex];
     ctrl.onSelectBeer(selectedBeer);
   };
 
   // Pre-load the next batch of beers so we know when to disable button (also makes beers load immediately)
-  function preLoadNextBatch() {
+  function preLoadNextBatch(pageNumber) {
     ctrl.beers = ctrl.beers.concat(preLoadedBeers);
 
     // Scroll to bottom so you can see latest beers loaded
@@ -43,14 +54,17 @@ function BeersListController($scope, $element, $timeout, $httpParamSerializer, $
       ul.scrollTop = ul.scrollHeight;
     });
 
-    const getBeers = curryGetBeers(page + 1, $httpParamSerializer);
+    const getBeers = curryGetBeers(pageNumber, $scope.filterString, $httpParamSerializer);
 
-    getBeers($http).then(response => {
+    return getBeers($http).then(response => {
       if (response.data.length === 0) {
         $scope.noMoreBeers = true;
       }
       preLoadedBeers = response.data;
       $scope.awaitingResponse = false;
+    }, response => {
+      alert('Error getting beers');
     });
   }
+
 }

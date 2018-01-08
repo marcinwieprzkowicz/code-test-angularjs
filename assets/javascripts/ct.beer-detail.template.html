@@ -1,5 +1,5 @@
-<div ng-if="!isImageLoaded">
-  <img class="image-loading" src="../images/spinner.jpg"/>
+<div ng-if="beerSelected && !isImageLoaded">
+  <img class="image-loading" src="../images/netneutrality-fidget-spinner-animated.gif"/>
 </div>
 <div ng-show="isImageLoaded" class="fade">
   <img class="beer-image" ng-src="{{$ctrl.beer.image_url}}" alt="{{$ctrl.beer.name}}" title="{{$ctrl.beer.name}}" />

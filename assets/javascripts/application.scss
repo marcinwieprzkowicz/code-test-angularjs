@@ -15,6 +15,12 @@ body {
     height: 100vh;
     top: 0;
 
+    form.search {
+      position: absolute;
+      top: 1em;
+      right: 2em;
+    }
+
     .load-more {
       position: absolute;
       right: 2em;
@@ -30,9 +36,9 @@ body {
 
       li {
         cursor: pointer;
-        .emphasize {
-          font-weight: bold;
-        }
+      }
+      li.emphasize {
+        font-weight: bold;
       }
       li:hover {
         background: green;
@@ -46,8 +52,8 @@ body {
     padding: 2em;
 
     .image-loading {
-      animation: image-spin infinite 4s linear;
-      height: 100px;
+      position: absolute;
+      margin: 10em auto 0 auto;
     }
 
     .beer-image {
@@ -56,11 +62,6 @@ body {
       height: 90vh;
     }
   }
-}
-
-@keyframes image-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .fade {

@@ -21,7 +21,7 @@ angular.module('codetest', [
     url: '/',
     template: require('./application.template.html'),
     resolve: {
-      beersList: curryGetBeers(1, $httpParamSerializerProvider.$get())
+      beersList: curryGetBeers(1, '', $httpParamSerializerProvider.$get())
     },
     controller: function($scope, beersList) {
       this.beers = beersList.data;

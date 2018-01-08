@@ -1,4 +1,8 @@
+<form class="search">
+  <input type="text" ng-model="filterString" />
+  <input type="submit" ng-click="filterBeersList()" />
+</form>
 <ul>
-  <li ng-class="emphasize: isSelected(beer.id)" ng-repeat="beer in $ctrl.beers" ng-click="selectBeer(beer.id)">{{beer.name}}</li>
+  <li ng-class="{emphasize: beer.isSelected}" ng-repeat="beer in $ctrl.beers" ng-click="selectBeer(beer.id)">{{beer.name}}</li>
 </ul>
 <button class="load-more" type="button" ng-disabled="noMoreBeers || awaitingResponse" ng-click="loadMore()">Load more</button>
