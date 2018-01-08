@@ -1,0 +1,6 @@
+{
+  "extends": "angular",
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}
