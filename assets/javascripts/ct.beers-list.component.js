@@ -14,10 +14,11 @@ function BeersListController($scope, $element, $timeout, $httpParamSerializer, $
   const ctrl = this;
   let page = 1;
   let preLoadedBeers = [];
+  $scope.noMoreBeers = false;
+  $scope.filterString = '';
   $scope.filterMaxlength = 50;
 
   ctrl.$onInit = function() {
-    $scope.noMoreBeers = false;
     // fetch second page of beers without displaying it
     preLoadNextBatch(2);
   };
