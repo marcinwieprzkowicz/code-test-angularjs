@@ -17,7 +17,7 @@ function curryGetBeers (pageNumber, filterString, paramSerializer) {
   };
 
   if (filterString !== '') {
-    queryOptions.beer_name = filterString;
+    queryOptions.beer_name = filterString.replace(/ /g, '_');
   }
 
   const queryString = paramSerializer(queryOptions);
@@ -29,5 +29,6 @@ function curryGetBeers (pageNumber, filterString, paramSerializer) {
     }).then(response => response, () => {
       alert('Error getting beers');
     });
+    // TODO should I chain on a .catch() method here as well?
   };
 }

@@ -20,7 +20,6 @@ describe('beers-list component', function () {
     const $rootScope = $injector.get('$rootScope');
     const $compile = $injector.get('$compile');
     $q = $injector.get('$q');
-    $httpBackend = $injector.get('$httpBackend');
     $httpParamSerializer = $injector.get('$httpParamSerializer');
     const curryGetBeers = $injector.get('curryGetBeers');
 
@@ -62,7 +61,7 @@ describe('beers-list component', function () {
   });
 
   it('should call getBeers to get the second page of beers', function() {
-    expect(curryGetBeersSpy).toHaveBeenCalledWith(2, '', jasmine.any(Function));
+    expect(curryGetBeersSpy).toHaveBeenCalledWith(2, '', $httpParamSerializer);
   });
 
   it('should disable the load more button if last page of beers displayed', function() {
