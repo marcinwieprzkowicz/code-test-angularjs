@@ -1,6 +1,7 @@
-<form class="search">
-  <input type="text" ng-model="filterString" />
-  <input type="submit" ng-click="filterBeersList()" />
+<form name="search" class="search">
+  <input type="text" name="filter" ng-model="filterString" ng-maxlength="filterMaxlength" ng-class="{error: search.filter.$invalid}"/>
+  <input type="submit" ng-disabled="search.filter.$invalid" ng-click="filterBeersList()" />
+  <div class="error" ng-if="search.filter.$invalid">restricted to {{filterMaxlength}} characters</div>
 </form>
 <ul>
   <li ng-class="{emphasize: beer.isSelected}" ng-repeat="beer in $ctrl.beers" ng-click="selectBeer(beer.id)">{{beer.name}}</li>

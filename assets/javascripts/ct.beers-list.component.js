@@ -14,6 +14,7 @@ function BeersListController($scope, $element, $timeout, $httpParamSerializer, $
   const ctrl = this;
   let page = 1;
   let preLoadedBeers = [];
+  $scope.filterMaxlength = 50;
 
   ctrl.$onInit = function() {
     $scope.noMoreBeers = false;

@@ -1,4 +1,4 @@
-$sidebarWidth: 30em;
+$sidebarWidth: 25em;
 
 html,
 body {
@@ -19,6 +19,16 @@ body {
       position: absolute;
       top: 1em;
       right: 2em;
+      padding: 1em;
+      background-color: white;
+
+      input.error {
+        outline: red 1px solid;
+      }
+
+      div.error {
+        color: red;
+      }
     }
 
     .load-more {
@@ -36,6 +46,9 @@ body {
 
       li {
         cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       li.emphasize {
         font-weight: bold;
@@ -62,13 +75,4 @@ body {
       height: 90vh;
     }
   }
-}
-
-.fade {
-    transition: all linear 500ms;
-    opacity: 1;
-}
-
-.fade.ng-hide {
-    opacity: 0;
 }
